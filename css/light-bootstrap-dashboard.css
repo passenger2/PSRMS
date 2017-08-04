@@ -124,9 +124,9 @@ body,
   position: relative; }
 
 a {
-  color: #fff; }
+  color: #1DC7EA; }
   a:hover, a:focus {
-    color: #fff;
+    color: #42d0ed;
     text-decoration: none; }
 
 a:focus, a:active,
@@ -302,7 +302,8 @@ body > .navbar-collapse {
   .sidebar .logo,
   body > .navbar-collapse .logo {
     padding: 10px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /*background-color: #1DC7EA;*/ }
     .sidebar .logo p,
     body > .navbar-collapse .logo p {
       float: left;
@@ -365,6 +366,16 @@ body > .navbar-collapse {
   body > .navbar-collapse[data-image]:after,
   body > .navbar-collapse.has-image:after {
     opacity: .77; }
+   .sidebar[data-color="dark"]:after,
+   body > .navbar-collapse[data-color="dark"]:after {
+    background: #222d32;
+    background: -moz-linear-gradient(top, #222d32 0%, #222d32 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #222d32), color-stop(100%, #533ce1));
+    background: -webkit-linear-gradient(top, #222d32 0%, #222d32 100%);
+    background: -o-linear-gradient(top, #222d32 0%, #222d32 100%);
+    background: -ms-linear-gradient(top, #222d32 0%, #222d32 100%);
+    background: linear-gradient(to bottom, #222d32 0%, #222d32 100%);
+    background-size: 150% 150%; }
   .sidebar[data-color="blue"]:after,
   body > .navbar-collapse[data-color="blue"]:after {
     background: #1F77D0;
@@ -721,7 +732,7 @@ body > .navbar-collapse {
 
 .form-control {
   background-color: #FFFFFF;
-  border: 1px solid #E3E3E3;
+  border: 1px solid #cecdcd;
   border-radius: 4px;
   color: #565656;
   padding: 8px 12px;
@@ -899,15 +910,14 @@ body > .navbar-collapse {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
-  padding: 12px 8px;
+  padding: 5px 8px;
   vertical-align: middle; }
 .table > thead > tr > th {
   border-bottom-width: 1px;
-  font-size: 12px;
-  text-transform: uppercase;
-  color: #9A9A9A;
+  font-size: 15px;
   font-weight: 400;
-  padding-bottom: 5px; }
+  padding-bottom: 5px;
+  font-weight: bold; }
 .table .td-actions .btn {
   opacity: 0.36;
   filter: alpha(opacity=36); }

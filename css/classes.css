@@ -22,3 +22,38 @@ input[type=checkbox]:checked::after {
   height: 40%;
   width: 90%;
 }
+
+
+.dataTables_length{
+  margin-top: 15px;
+}
+
+.dataTables_filter{
+  margin-top: 15px;
+  width: 90%;
+}
+
+.dataTables_info{
+  margin-top: -15px;
+}
+
+.dataTables_paginate{
+  margin-top: -10px !important;
+  float: right;
+
+}
+
+
+.dataTables_length select{
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+}
+
+.dataTables_filter label{
+   width: 100%;
+}
+
+div.dataTables_wrapper div.dataTables_filter input{
+  margin-left: 0;
+  width: 100%;
+}
