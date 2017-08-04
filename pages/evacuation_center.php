@@ -1,7 +1,5 @@
-<?php include ('check_credentials.php'); ?>
-<?php include ('head.php'); ?>
-
 <?php $ul_evac ="active"; include ('sidebar.php'); ?>
+<?php include ('head.php'); ?>
 
     <div class="main-panel">
         
@@ -105,25 +103,26 @@ $db_handle = new DBController();
 
 
                                 <p class="category"> <i class="fa fa-square-o"></i> Evacuation Centers will be listed here</p> <br>
-                                <a class='btn btn-success' href='add_evacuation.php'><i class='pe-7s-add-user'></i> Add New Evcuation Center</a>
+                                <a class='btn btn-success btn-fill' href='add_evacuation.php'><i class='pe-7s-add-user'></i> Add New Evcuation Center</a>
                                 
                             </div>
 
 
               <div class="panel-body">
         
-        <table class="table table-bordered table-advance table-hover ">
+        <table class="table table-bordered table-advance table-hover" id="table-evac-list">
+            <thead>
+              <tr>
+               <th><i class="icon_mobile"></i> Evacuation Center No.</th>
+               <th><i class="icon_profile"></i> Evacuation Center Name</th>
+               <th><i class="icon_profile"></i>Evacuation Center Address</th>
+               <th><i class="icon_pin_alt"></i> Evacuation Center Type</th>
+               <th><i class="icon_pin_alt"></i> Evacuation Center Manager</th>
+               <th><i class="icon_calendar"></i> Evacuation Center Contact</th>
+               <th><i class="icon_calendar"></i> Evacuation Center Specific Address</th>
+              </tr>
+            </thead>
            <tbody>
-            <tr>
-             <th><i class="icon_mobile"></i> Evacuation Center No.</th>
-             <th><i class="icon_profile"></i> Evacuation Center Name</th>
-             <th><i class="icon_profile"></i>Evacuation Center Address</th>
-             <th><i class="icon_pin_alt"></i> Evacuation Center Type</th>
-             <th><i class="icon_pin_alt"></i> Evacuation Center Manager</th>
-             <th><i class="icon_calendar"></i> Evacuation Center Contact</th>
-             <th><i class="icon_calendar"></i> Evacuation Center Specific Address</th>
-             
-            </tr>
             <?php
             
 
@@ -178,3 +177,15 @@ $db_handle = new DBController();
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
+    <script>
+         $(document).ready(function() {
+
+          $('#table-evac-list').DataTable({
+            'dom': '<"row"<"col-md-6 table-label"><"col-md-3"l><"col-md-3"f>><"row"<"col-md-12"<"table"t>>><"row"<"col-md-6"i><"col-md-6"p>>'
+          });
+
+          $('.dataTables_filter input[type="search"]').attr('placeholder','Search Evacuation Center...').css({'width':'108%','display':'','border-radius':'0'});
+
+          
+      });
+    </script>

@@ -1,12 +1,9 @@
-<?php include ('check_credentials.php'); ?>
-<?php
+<?php $ul_index = "active"; $ul_forms = ""; $ul_idp =""; include ('sidebar.php'); ?>
+<?php session_start();
 unset($_SESSION['form_id']);
 unset($_SESSION['form_name']);
 ?>
-
-<?php $ul_index = "active"; $ul_forms = ""; $ul_idp =""; include ('sidebar.php'); ?>
-<?php include ('head.php');
-?>
+<?php include ('head.php'); ?>
 
 <div class="main-panel">
         
@@ -22,6 +19,36 @@ $db_handle = new DBController();
 
         <div class="content">
             <div class="container-fluid">
+                <!-- <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="header text-center">
+                                HOY!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="header text-center">
+                                HOY!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="header text-center">
+                                HOY!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="header text-center">
+                                HOY!
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card">
@@ -73,7 +100,7 @@ $db_handle = new DBController();
 
 
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
@@ -95,9 +122,9 @@ $db_handle = new DBController();
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                         <div class="card ">
                             <div class="header">
                                 <h4 class="title">Tasks</h4>
@@ -216,7 +243,7 @@ $db_handle = new DBController();
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

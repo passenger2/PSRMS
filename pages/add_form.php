@@ -1,10 +1,6 @@
-<?php
-include ('check_credentials.php');
-?>
 <html>
     <head>
-        <?php include("css_include.php");
-        ?>
+        <?php include("css_include.php"); ?>
     </head>
     <body>
         <table align="center" cellspacing="3" cellpadding="3" width="75%">

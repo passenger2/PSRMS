@@ -1,10 +1,6 @@
 
-<?php
-include ('check_credentials.php');
-include ('head.php');
-?>
-
-<?php $ul_index = "active"; $ul_forms = ""; $ul_idp =""; include ('sidebar.php'); ?>
+<?php $ul_index = "active"; include ('sidebar.php'); ?>
+<?php include ('head.php'); ?>
 
     <div class="main-panel">
         
@@ -17,6 +13,13 @@ $db_handle = new DBController();
   //$id = $_GET['id'];
 
 ?>
+  <style type="text/css">
+
+        .panel-heading{
+          color: #1F77D0;
+        }
+
+    </style>
   <form method="POST" action="submit_evac.php">
        <div class="content">
             <div class="container-fluid">
@@ -25,14 +28,14 @@ $db_handle = new DBController();
                         
 
               <!-- page start-->
-              <div class="row">
+              <div class="row" style="margin-top: 20px;">
                 <div class="col-lg-12">
                    
 					    <div class="row">
 							<div class="col-lg-6">
-                                <div class="panel panel-success">
+                                <div class="panel panel-info">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    <div class="panel-heading">Evacuation Center Information</div>
+                                    <div class="panel-heading"><h5><b>Evacuation Center Information</b></h5></div>
 									</a>
                                         <div class="panel-body panel-collapse collapse in" id="collapseOne">
                                             <div class="form-group col-md-12">
@@ -89,7 +92,7 @@ $db_handle = new DBController();
 
 												<!--/.row-->
 											</div>
-                      <input type="submit" class="btn btn-info" value="Submit">
+                      <input type="submit" class="btn btn-info btn-fill" value="Submit">
                                     </form>
                                             
                                            

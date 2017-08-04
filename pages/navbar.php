@@ -9,10 +9,8 @@
                     </button>
                 </div>
                 <div class="collapse navbar-collapse" >
-                  
-
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        <!-- <li>
                            <a href="">
                                <p>Account</p>
                             </a>
@@ -33,7 +31,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                               </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="logout.php">
                                 <p>Log out</p>

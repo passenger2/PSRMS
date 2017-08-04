@@ -1,10 +1,9 @@
+<?php $ul_assessment = "active"; include ('sidebar.php'); ?>
+<?php 
+session_start();
+include ('head.php'); ?>
 
-<?php
-include ('check_credentials.php');
-include ('sidebar.php');
-include ('head.php');
-$ul_assessment = "active";
-?>
+
 
     <div class="main-panel">
         
@@ -82,7 +81,7 @@ $_SESSION['disaster_id'] = 1;
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #9368E9;
+    background-color: #42d0ed;
     color: white;
 }
 
@@ -90,81 +89,85 @@ $_SESSION['disaster_id'] = 1;
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #9368E9;
+    background-color: #42d0ed;
     color: white;
 }
 
-.carousel-control {
-    width: 4%
-}
 
- .assessment-table tbody:hover {
-    cursor: pointer;
-}
+
 </style>
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                    <h4 class="title">CSWD </h4> <br>
-                    <h5>Search:</h5>
-                    </div>
-                    <div class="panel-body">
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">CSWD </h4> <br>
 
-                    <table class="table table-bordered table-advance table-hover ">
-                    <?php
-                    $idps = $db_handle->runFetch("SELECT DAFAC_DAFAC_SN, IDP_ID, CONCAT(Lname, ', ', Fname, ' ', Mname) AS IDPName, Gender, Age, COALESCE(MIN(j.INTAKE_ANSWERS_ID), 0) AS intake_answersID FROM `idp` i  LEFT JOIN intake_answers j on i.IDP_ID = j.IDP_IDP_ID GROUP BY i.IDP_ID, IDPName ORDER BY IDPName ASC");
-                    if(!empty($idps)) { 
-                    ?>
-                       <tbody>
-                          <tr>
-                            <td align="left"><b>Name</b></td>
-                            <td align="left"><b>Gender</b></td>
-                            <td align="left"><b>Age</b></td>
-                            <td align="left"><b>Action</b></td>
+
+                                <!--<p class="category"> <i class="fa fa-square-o"></i> IDPs will be listed here</p> <br>
+                                <a class='btn btn-success btn-fill' href='cswd.php'><i class='pe-7s-add-user'></i> Add New IDP</a>-->
+                            </div>
+
+
+              <div class="panel-body">
+				
+				<table class="table table-bordered table-advance table-hover" id="table-idp-assessment">
+                <?php
+                $idps = $db_handle->runFetch("SELECT DAFAC_DAFAC_SN, IDP_ID, CONCAT(Lname, ', ', Fname, ' ', Mname) AS IDPName, Gender, Age, COALESCE(MIN(j.INTAKE_ANSWERS_ID), 0) AS intake_answersID FROM `idp` i  LEFT JOIN intake_answers j on i.IDP_ID = j.IDP_IDP_ID GROUP BY i.IDP_ID, IDPName ORDER BY IDPName ASC");
+                if(!empty($idps)) { 
+                ?>
+                   <thead>
+                        <tr>
+                            <th align="left"><b>Family ID</b></th>
+                            <th align="left"><b>IDP ID</b></th>
+                            <th align="left"><b>Name</b></th>
+                            <th align="left"><b>Gender</b></th>
+                            <th align="left"><b>Age</b></th>
+                            <th align="left"><b>Action</b></th>
                         </tr>
-                    <?php
-                    foreach ($idps as $idp) {
-                    echo '<tr>
-                        <td align="left">' . $idp['IDPName'] .'</td>
-                        <td align="left">';
-                        echo(($idp['Gender'] == 1) ? 'Male' : 'Female');
-                        echo '</td>
-                        <td align="left">' . $idp['Age'] . '</td>
-                        <td align="left">';
-                        $idp_age_group = ($idp['Age'] < 18) ? 2 : 1;
-                        if($idp['intake_answersID'] == 0) {
-                            echo '
-                            <button class="btn btn-primary btn-fill" id="'.$idp['IDP_ID'].'" onClick ="load_modal(this.id)"><i class="pe-7s-info"></i> IDP details and history</button>
-                            <a href="apply_intake.php?id=' . $idp['IDP_ID'] . '&ag=' . $idp_age_group . '" class="btn btn-info btn-fill"><i class="icon_check_alt"></i>Apply Intake</a>
-                            ';
-                        } else {
-                            echo '
-                            <button class="btn btn-primary btn-fill" id="'.$idp['IDP_ID'].'" onClick ="load_modal(this.id)"><i class="pe-7s-info"></i> IDP details and history</button>
-                            <a href="apply_form.php?id=' . $idp['IDP_ID'] . '" class="btn btn-info btn-fill">Apply Assessment Tool</a>
-                            <a href="apply_intake.php?id=' . $idp['IDP_ID'] . '&ag=' . $idp_age_group . '" class="btn btn-info btn-fill"><i class="icon_check_alt"></i>Apply Intake</a>';
-                        }
+                   </thead>
+				   <tbody>
+                <?php
+                foreach ($idps as $idp) {
+                echo '<tr>
+                    <td align="left">' . $idp['DAFAC_DAFAC_SN'] . '</td>
+                    <td align="left">' . $idp['IDP_ID'] . '</td>
+                    <td align="left">' . $idp['IDPName'] .'</td>
+                    <td align="left">';
+                    echo(($idp['Gender'] == 1) ? 'Male' : 'Female');
+                    echo '</td>
+                    <td align="left">' . $idp['Age'] . '</td>
+                    <td align="center">';
+                    $idp_age_group = ($idp['Age'] < 18) ? 2 : 1;
+                    if($idp['intake_answersID'] == 0) {
                         echo '
-                        </td>
-                    </tr>
-                    ';
+                        <button class="btn btn-info btn-sm btn-fill" id="'.$idp['IDP_ID'].'" onClick ="load_modal(this.id)"><i class="pe-7s-info"></i> IDP details and history</button>
+                        <a href="apply_intake.php?id=' . $idp['IDP_ID'] . '&ag=' . $idp_age_group . '" class="btn btn-success btn-sm btn-fill"><i class="icon_check_alt"></i>Apply Intake</a>
+                        ';
+                    } else {
+                        echo '
+                        <button class="btn btn-info btn-sm btn-fill" id="'.$idp['IDP_ID'].'" onClick ="load_modal(this.id)"><i class="pe-7s-info"></i> IDP details and history</button>
+                        <a href="apply_form.php?id=' . $idp['IDP_ID'] . '" class="btn btn-primary btn-sm btn-fill">Apply Assessment Form</a>
+                        <a href="apply_intake.php?id=' . $idp['IDP_ID'] . '&ag=' . $idp_age_group . '" class="btn btn-success btn-sm btn-fill"><i class="icon_check_alt"></i>Apply Intake</a>';
                     }
-                    }?>
-                       </tbody>
-                    </table>
-                    </div>
-                    <!-- page end-->
-                    <div id="modal-container">
-                    </div>
-                    </div>
-                </div>
+                    echo '
+                    </td>
+                </tr>
+                ';
+                }
+                }?>
+				   </tbody>
+				</table>
+			</div>
+              <!-- page end-->
+            <div id="modal-container">
             </div>
-        </div>
-    </div>
-</div>
-    <!-- container section end -->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+  <!-- container section end -->
     <!-- javascripts -->
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -173,6 +176,7 @@ $_SESSION['disaster_id'] = 1;
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
 	<script>
+        
         window.load_modal = function(clicked_id) {
             $("#modal-container").load("idp-assessment-modal.php?id="+clicked_id, function() {
                 show_modal(clicked_id);
@@ -181,32 +185,45 @@ $_SESSION['disaster_id'] = 1;
         }
         
         function show_modal(clicked_id){
-            // Get the modal
-            var modal = document.getElementById('myModal' + clicked_id);
+        // Get the modal
+        var modal = document.getElementById('myModal' + clicked_id);
 
-            // Get the button that opens the modal
-            var btn = document.getElementById("" + clicked_id);
+        // Get the button that opens the modal
+        var btn = document.getElementById("" + clicked_id);
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close");
-            //alert(span.length);
-            // When the user clicks the button, open the modal 
-            //btn.onclick = function() {
-                modal.style.display = "block";
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close");
+        //alert(span.length);
+        // When the user clicks the button, open the modal 
+        //btn.onclick = function() {
+            modal.style.display = "block";
 
-            // When the user clicks on <span> (x), close the modal
-            for(i =0; i<= span.length; i++){
-                span[i].onclick = function() {
-                    //alert("true");
-                    modal.style.display = "none";
-                }
-                window.onclick = function(event) {
-                    //alert("true");
-                    if (event.target == modal) {
-                        modal.style.display = "none";
-                    }
-                }
+
+        // When the user clicks on <span> (x), close the modal
+        for(i =0; i<= span.length; i++){
+            span[i].onclick = function() {
+            //alert("true");
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            //alert("true");
+            if (event.target == modal) {
+                modal.style.display = "none";
             }
+        }
+
+        }
+
+
+        // When the user clicks anywhere outside of the modal, close it
+
+
+
+
+
+
+
+
         }
 
 
@@ -229,3 +246,17 @@ $_SESSION['disaster_id'] = 1;
 
         }
 	</script>
+    <script>
+         $(document).ready(function() {
+
+          $('#table-idp-assessment').DataTable({
+            'dom': '<"row"<"col-md-6 table-label"><"col-md-3"l><"col-md-3"f>><"row"<"col-md-12"<"table"t>>><"row"<"col-md-6"i><"col-md-6"p>>'
+
+    
+          });
+
+          $('.dataTables_filter input[type="search"]').attr('placeholder','Search IDP...').css({'width':'108%','display':'','border-radius':'0'});
+
+          
+      });
+    </script>

@@ -1,4 +1,3 @@
-<?php include ('check_credentials.php'); ?>
 <html>
     <head>
         <?php

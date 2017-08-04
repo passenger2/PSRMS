@@ -1,11 +1,9 @@
-<?php include ('check_credentials.php'); ?>
-<?php include ('head.php'); ?>
-        <?php
-            include ('footer.php'); 
-        ?>
+        <?php include ('head.php'); ?>
+        <?php include ('footer.php'); ?>
         
         <?php
             require_once("dbcontroller.php");
+            require('check_credentials.php');
             include("css_include.php");
             $idpID = $_GET['id'];
             $userID = $_SESSION['userID'];

@@ -1,4 +1,4 @@
-<?php include ('check_credentials.php'); ?>
+
 <?php include ('head.php'); ?>
 
 <?php $ul_index = ""; $ul_forms = ""; $ul_idp ="active";include ('sidebar.php'); ?>

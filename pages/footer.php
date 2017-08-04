@@ -20,7 +20,7 @@
    
 
     <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="../js/light-bootstrap-dashboard.js"></script>
@@ -29,6 +29,10 @@
 	<script src="../js/demo.js"></script>
 
     <script src="../js/sweetalert2.min.js"></script>
+
+    <script src="../js/jquery.dataTables.js"></script>
+
+    <script src="../js/dataTables.bootstrap.js"></script>
 
     
 </html>

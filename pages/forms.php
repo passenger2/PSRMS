@@ -1,5 +1,5 @@
-<?php include ('check_credentials.php'); ?>
 <?php
+session_start();
 unset($_SESSION['form_id']);
 unset($_SESSION['form_name']);
 ?>
@@ -43,7 +43,7 @@ $forms = $db_handle->runFetch("SELECT * FROM `form` WHERE 1");
         <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table table-bordered table-advance table-hover ">
                 <tr>
                     <?php //<td align="left"><b>NGO Form ID</b></td> ?>
-                    <td align="left"><b>Assessment form Name <button class="btn btn-success btn-fill btn-md" onClick ="show_modal()" role="button"><i class="fa fa-plus"></i>Add Assessment Tool</button></b></td>
+                    <td align="left"><b>Assessment form Name <button class="btn btn-success btn-fill btn-sm" onClick ="show_modal()" role="button"><i class="fa fa-plus"></i>Add Assessment Tool</button></b></td>
                     <td align="left"><b>Action</b></td>
 
                 </tr>
@@ -52,7 +52,7 @@ $forms = $db_handle->runFetch("SELECT * FROM `form` WHERE 1");
                     //<td align="left">' . $form['NGO_FORM_ID'] . '</td>
                     echo '<tr>
                     <td align="left">' . $form['FormType'] . '</td>
-                    <td align="left"><button class="btn btn-warning btn-fill center-block"><a href="edit_form.php?form_id=' . $form['FormID'] . '&form_name='.$form['FormType'].'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Tool</a></button></td>
+                    <td align="center"><button class="btn btn-warning btn-sm btn-fill center-block"><a href="edit_form.php?form_id=' . $form['FormID'] . '&form_name='.$form['FormType'].'" style="color: #fff;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Tool</a></button></td>
                     </tr>
                     ';
                     }
@@ -66,7 +66,7 @@ $forms = $db_handle->runFetch("SELECT * FROM `form` WHERE 1");
             <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table table-bordered table-advance table-hover ">
                 <tr>
                     <?php //<td align="left"><b>NGO Form ID</b></td> ?>
-                    <td align="left"><b>Intake form [Disaster - Age group] <button class="btn btn-success btn-fill btn-md" onClick ="show_modal()" role="button"><i class="fa fa-plus"></i>Create Intake Form</button></b></td>
+                    <td align="left"><b>Intake form [Disaster - Age group] <button class="btn btn-success btn-fill btn-sm" onClick ="show_modal()" role="button"><i class="fa fa-plus"></i>Create Intake Form</button></b></td>
                     <td align="left"><b>Action</b></td>
 
                 </tr>
@@ -81,13 +81,14 @@ $forms = $db_handle->runFetch("SELECT * FROM `form` WHERE 1");
                         echo ("Intake for children");
                     }
                     echo '</td>
-                    <td align="left"><button class="btn btn-warning btn-fill center-block"><a href="edit_intake.php?form_id=' . $form['FormID'] . '&form_name='.$form['FormType'].'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Form</a></button></td>
+                    <td align="center"><button class="btn btn-warning btn-fill center-block"><a href="edit_intake.php?form_id=' . $form['FormID'] . '&form_name='.$form['FormType'].'"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit Form</a></button></td>
                     </tr>
                     ';
                     }
                 } else {
                     echo '<tr>
                         <td>No forms available!</td>
+                        <td></td>
                     </tr>';
                 }?>
             </table>
@@ -200,6 +201,5 @@ $forms = $db_handle->runFetch("SELECT * FROM `form` WHERE 1");
   </div> 
     </div>
   </div>
-<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="../js/edit_form-functions.js"></script>
+</div>
 

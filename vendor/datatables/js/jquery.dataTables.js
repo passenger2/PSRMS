@@ -11396,7 +11396,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Showing _START_ to _END_ of _TOTAL_ results",
 	
 	
 			/**
@@ -11417,7 +11417,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Showing 0 to 0 of 0 results",
 	
 	
 			/**
@@ -11439,7 +11439,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoFiltered": "(filtered from _MAX_ total entries)",
+			"sInfoFiltered": "(filtered from _MAX_ total results)",
 	
 	
 			/**
@@ -11557,7 +11557,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Show _MENU_ results",
 	
 	
 			/**
@@ -11637,7 +11637,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "",
 	
 	
 			/**

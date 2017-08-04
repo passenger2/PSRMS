@@ -21,7 +21,7 @@ if(!empty($idps)) {
                         <div class="modal-header">
                             <span id = "<?php echo($idp['IDP_ID']) ?>" class="close" onclick="close_modal(this.id)">&times;</span>
                             <h2>
-                                <?php echo($idp['Fname']) ?>&nbsp;<?php echo($idp['Mname']) ?>&nbsp;<?php echo($idp['Lname']) ?>
+                                <?php echo($idp['Fname']) ?>&nbsp<?php echo($idp['Mname']) ?>&nbsp<?php echo($idp['Lname']) ?>
                                 <span><h5><sup>Personal Information</sup></h5></span>
                             </h2>
 
@@ -82,7 +82,7 @@ if(!empty($idps)) {
                             <br>
 
                             <h4>Original Address <hr></h4>
-                            <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table">
+                            <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table  ">
                                 <tr>
                                     <td style="border-top: 0px solid black"><h5><b>Street/Purok</b></h5></td>
                                     <td style="border-top: 0px solid black"><h5><b>Barangay</b></h5></td>
@@ -194,29 +194,27 @@ if(!empty($idps)) {
                             <div class="modal-header">
                             <span id = "<?php echo($idp['IDP_ID']) ?>" class="close" onclick="close_modal(this.id)">&times;</span>
                             <h2>
-                                <?php echo($idp['Fname']) ?>&nbsp;<?php echo($idp['Mname']) ?>&nbsp;<?php echo($idp['Lname']) ?> 
+                                <?php echo($idp['Fname']) ?>&nbsp<?php echo($idp['Mname']) ?>&nbsp<?php echo($idp['Lname']) ?> 
                                 <span><h5><sup>Form application history</sup></h5></span>
                             </h2>
 
                             </div>
-                            <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table table-hover">
-                                <thead>
+                            <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table">
                                     <tr>
-                                        <th style="border-top: 0px solid black"></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Intake taken</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Date taken</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Previously interviewed?</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Knew the organization?</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>If yes, name of the organization</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Psychosocial report rating improvement</b></h6></th>
+                                        <td style="border-top: 0px solid black"><h6><b></b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Intake taken</b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Date taken</b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Previously interviewed?</b></h5></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Knew the organization?</b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>If yes, name of the organization</b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Psychosocial report rating improvement</b></h6></td>
                                     </tr>
-                                </thead>
                             <?php
                             $results = $db_handle->runFetch("SELECT intake_answers.IDP_IDP_ID as IDP, intake_answers.INTAKE_ANSWERS_ID, IF(intake_answers.INTAKE_IntakeID = 1, 'Intake for Adults', 'Intake for Children') as FormID, intake_answers.USER_UserID as User, intake_answers.Date_taken as DateTaken, 'N/A' as Score FROM intake_answers
                             JOIN
                             intake ON intake_answers.INTAKE_IntakeID = intake.IntakeID
                             where intake_answers.IDP_IDP_ID = ".$idp['IDP_ID']."
-                            ORDER BY DateTaken DESC");
+                            ORDER BY DateTaken ASC");
                             $order = 1;
                             if(!empty($results)) {
                             foreach ($results as $forms) {
@@ -226,7 +224,6 @@ if(!empty($idps)) {
                                 (SELECT Answer FROM answers_quali JOIN intake_answers on intake_answers.INTAKE_ANSWERS_ID = answers_quali.INTAKE_ANSWERS_INTAKE_ANSWERS_ID WHERE IDP_IDP_ID = ".$idp['IDP_ID']." AND INTAKE_ANSWERS_ID = ".$forms['INTAKE_ANSWERS_ID']." AND QUESTIONS_QuestionsID = 218) as Result3,
                                 (SELECT Answer FROM answers_quanti JOIN intake_answers on intake_answers.INTAKE_ANSWERS_ID = answers_quanti.INTAKE_ANSWERS_INTAKE_ANSWERS_ID WHERE IDP_IDP_ID = ".$idp['IDP_ID']." AND INTAKE_ANSWERS_ID = ".$forms['INTAKE_ANSWERS_ID']." AND QUESTIONS_QuestionsID = 219) as Result4");
                             ?>
-                                <tbody>
                                     <tr>
                                         <td>
                                             <?php echo $order; ?>
@@ -288,7 +285,6 @@ if(!empty($idps)) {
                                         <?php } ?>
                                         <?php $order++ ?>
                                     </tr>
-                                </tbody>
                             <?php
                                 }
                             } else {
@@ -307,35 +303,28 @@ if(!empty($idps)) {
                                 
                             </div>
                             <div>
-                                <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table assessment-table table-hover">
-                                    <thead>
+                                <table align="left" cellspacing="3" cellpadding="3" width="75%" class="table">
                                     <tr>
-                                        <th style="border-top: 0px solid black"></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Assessment tool taken</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Date taken</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Score</b></h6></th>
-                                        <th style="border-top: 0px solid black"><h6><b>Assessment</b></h6></th>
+                                        <td style="border-top: 0px solid black"><h6><b></b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Assessment tool taken</b></h5></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Date taken</b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Score</b></h6></td>
+                                        <td style="border-top: 0px solid black"><h6><b>Assessment</b></h6></td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
                             <?php
-                            $results = $db_handle->runFetch("SELECT A.IDP_IDP_ID as IDP, A.FORM_ANSWERS_ID, FormType as FormID, A.USER_UserID as User, A.DateTaken, Score, A.UnansweredItems FROM
-                            (SELECT form_answers.IDP_IDP_ID, form_answers.FORM_ANSWERS_ID, FormType, form_answers.USER_UserID, form_answers.DateTaken, form_answers.UnansweredItems FROM form_answers
+                            $results = $db_handle->runFetch("SELECT A.IDP_IDP_ID as IDP, A.FORM_ANSWERS_ID, FormType as FormID, A.USER_UserID as User, A.DateTaken, Score FROM
+                            (SELECT form_answers.IDP_IDP_ID, form_answers.FORM_ANSWERS_ID, FormType, form_answers.USER_UserID, form_answers.DateTaken FROM form_answers
                             JOIN form on form.FormID = form_answers.FORM_FormID
                             where form_answers.IDP_IDP_ID = ".$idp['IDP_ID'].") A
                             RIGHT JOIN
-                            (SELECT DISTINCT(IDP_IDP_ID), FORM_ANSWERS_ID, COALESCE(SUM(answers_quanti.Answer),0) as Score FROM answers_quanti RIGHT JOIN form_answers ON form_answers.FORM_ANSWERS_ID = answers_quanti.FORM_ANWERS_FORM_ANSWERS_ID where form_answers.IDP_IDP_ID = ".$idp['IDP_ID']." GROUP BY FORM_ANWERS_FORM_ANSWERS_ID) B
+                            (SELECT DISTINCT(IDP_IDP_ID), FORM_ANSWERS_ID, SUM(answers_quanti.Answer) as Score FROM answers_quanti JOIN form_answers ON form_answers.FORM_ANSWERS_ID = answers_quanti.FORM_ANWERS_FORM_ANSWERS_ID where form_answers.IDP_IDP_ID = ".$idp['IDP_ID']." GROUP BY FORM_ANWERS_FORM_ANSWERS_ID) B
                             ON A.FORM_ANSWERS_ID = B.FORM_ANSWERS_ID
-                            ORDER BY DateTaken DESC");
+                            ORDER BY DateTaken ASC");
                             $order = 1;
                             if(!empty($results)) {
-                                foreach ($results as $forms) {
-                                    if(!isset($forms['UnansweredItems'])) {
-                                        echo '<tr id="'.$forms['FORM_ANSWERS_ID'].'" name="info-link">';
-                                    } else {
-                                        echo '<tr id="'.$forms['FORM_ANSWERS_ID'].'" name="info-link" class="bg-danger">';
-                                    }
+                            foreach ($results as $forms) {
                             ?>
+                                    <tr>
                                         <td>
                                             <?php echo $order; ?>
                                         </td>
@@ -345,21 +334,15 @@ if(!empty($idps)) {
                                         <td>
                                             <?php echo $forms['DateTaken']; ?>
                                         </td>
-                                        <?php
-                                            if(!isset($forms['UnansweredItems'])) {
-                                                echo '<td>'.$forms['Score'].'</td>';
-                                            } else {
-                                                echo '<td><h6><sup>PARTIAL</sup><h6>'.$forms['Score'].'</td>';
-                                            }
-                                        ?>
+                                        <td>
+                                            <?php echo $forms['Score']; ?>
+                                        </td>
                                         <td>
                                             (under construction)
                                         </td>
-                                        </tbody>
                                         <?php $order++ ?>
-                                    
+                                    </tr>
                             <?php
-                                echo '</tr>';
                                 }
                             } else {
                             ?>
@@ -388,11 +371,6 @@ if(!empty($idps)) {
         </div>
     </td>
 </tr>
-<script>
-    $('tr[name="info-link"]').on("click", function() {
-    document.location = 'view_answers.php?id='+this.id;
-});
-</script>
 <?php
     }
 }

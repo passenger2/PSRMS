@@ -9,13 +9,12 @@ if (empty($formType)) {
 } else {
     /*$question = $db_handle->runUpdate("INSERT INTO `ngo_form` (`NGO_FORM_ID`, `FORM_FormID`, `AGENCY_AgencyID`) VALUES (NULL, '".$id."', '".$agencyID."')");*/
     
-    $form = $db_handle->runUpdate("INSERT INTO `form` (`FormID`, `FormType`, `Instructions`) VALUES (NULL, '".$formType."', \"".nl2br($formInstructions)."\")");
+    $form = $db_handle->runUpdate("INSERT INTO `form` (`FormID`, `FormType`, `Instructions`) VALUES (NULL, '".$formType."', '".$formInstructions."')");
     
     if($db_handle->getUpdateStatus()) {
         echo "<script type='text/javascript'>alert('Add Succesful!');
         location='forms.php';
         </script>";
     }
-    /*$db_handle->conn->quote(nl2br($formInstructions))*/
 }
 ?>

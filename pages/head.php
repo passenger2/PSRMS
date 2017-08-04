@@ -12,9 +12,7 @@
 
 
     <!-- Bootstrap core CSS     -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Data Tables -->
-    <link rel="stylesheet" type="text/css" href="../css/dataTables.bootstrap.min.css">
+    <link href="../vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
 
     <!-- Animation library for notifications   -->
     <link href="../css/animate.min.css" rel="stylesheet"/>
@@ -31,11 +29,17 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="../css/pe-icon-7-stroke.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/classes.css">
-    <link rel="stylesheet" href="../css/styles.css">
+
+     <link rel="stylesheet" href="../css/classes.css">
+
+     <link rel="stylesheet" href="../css/styles.css">
+
     <link href="../css/sweetalert2.min.css" rel="stylesheet" />
+
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="../vendor/datatables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
     
 
 </head>

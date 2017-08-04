@@ -1,7 +1,6 @@
-<?php include ('check_credentials.php'); ?>
 <?php require_once("dbcontroller.php"); ?>
 <?php $ul_index = "active"; $ul_forms = ""; $ul_idp =""; include ('sidebar.php'); ?>
-<?php include ('head.php'); ?>
+<?php session_start(); include ('head.php'); ?>
 <?php
         $id = $_GET['form_id'];
         $name = $_GET['form_name'];

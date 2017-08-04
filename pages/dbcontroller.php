@@ -4,7 +4,7 @@ class DBController {
     private $user = "root";
     private $password = "";
     private $database = "psrms";
-    public $conn;
+    private $conn;
     public $update_status;
     public $lastID;
     public $entryCount;

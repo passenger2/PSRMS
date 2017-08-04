@@ -1,10 +1,8 @@
-
+<?php $ul_assessment = "active"; include ('sidebar.php'); ?>
 <?php
 require('check_credentials.php');
-include ('head.php');
+include ('head.php'); 
 ?>
-
-<?php $ul_assessment = "active"; include ('sidebar.php'); ?>
 
     <div class="main-panel">
         
@@ -58,7 +56,9 @@ include ('head.php');
                                                 <b><?php
                                                     if(!empty($forms)) {
                                                         foreach ($forms as $form) {
-                                                            echo ('<option name="'.$form['FormType'].'" value="'.$form['FormID'].'">'.$form['FormType'].'</option>');
+                                                            if($idp_age_group == $form['AgeGroup'] || $form['AgeGroup'] == null) {
+                                                                echo ('<option name="'.$form['FormType'].'" value="'.$form['FormID'].'">'.$form['FormType'].'</option>');
+                                                            }
                                                         }
                                                     }?>
                                                 </b>    
@@ -73,6 +73,56 @@ include ('head.php');
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <input type="checkbox" aria-label="...">
+                                        <h5 class="text-center">Qualitative Assessment</h5>
+                                    </div>
+                                </div>
+                            </div>
+                             <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <input type="checkbox" aria-label="...">
+                                        <h5 class="text-center">Quali and Quanti -ASDI Form (interview)</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <input type="checkbox" aria-label="...">
+                                        <h5 class="text-center">PHQ-9</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <input type="checkbox" aria-label="...">
+                                        <h5 class="text-center">Combined PCL-5 and ASD with Translations</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <input type="checkbox" aria-label="...">
+                                        <h5 class="text-center">Global Functioning</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel panel-primary">
+                                    <div class="panel-body">
+                                        <input type="checkbox" aria-label="...">
+                                        <h5 class="text-center">Generalized Anxiety Disorder Measure</h5>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         </div>

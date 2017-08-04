@@ -1,18 +1,32 @@
-
-<?php include ('check_credentials.php'); ?>
-<?php include ('footer.php'); ?>
-<?php include ('head.php'); ?>
 <?php $ul_index = "active"; $ul_forms = ""; $ul_idp =""; include ('sidebar.php'); ?>
+<?php include ('head.php'); ?>
+
 
     <div class="main-panel">
         
 <?php include ('navbar.php'); ?>
+
+<?php include ('footer.php'); ?>
 <?php
 require_once("dbcontroller.php");
 $db_handle = new DBController();
   //$id = $_GET['id'];
 
 ?>
+  <style type="text/css">
+    	
+    		#home_based_div{
+    			display: none;
+    		}
+    		#displayHead{
+    			display: none;
+    		}
+
+    		.panel-heading{
+    			color: #1F77D0;
+    		}
+
+    </style>
   <form method="POST" action="adddemo.php">
        <div class="content">
             <div class="container-fluid">
@@ -21,67 +35,67 @@ $db_handle = new DBController();
                         
 
               <!-- page start-->
-              <div class="row">
+              <div class="row" style="margin-top: 20px;">
                 <div class="col-lg-12">
                    
 					    <div class="row">
 					    
 							<div  id = "personal_info_div" class="col-lg-6">
-                                <div class="panel panel-success">
+                                <div class="panel panel-info">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    <div class="panel-heading">Personal Information</div>
+                                    <div class="panel-heading"><h6><b>Personal Information</b></h6></div>
 									</a>
                                         <div class="panel-body panel-collapse collapse in" id="collapseOne">
-                                            <div class="form-group col-md-12">
-                                                <label>Last Name*</label>
-                                                <input class="form-control" id = 'Lname' name='Lname' placeholder="Enter Last name" >
+                                            <div class="form-group col-md-4">
+                                                <label>Last Name<span class="required">*</span></label>
+                                                <input class="form-control" id = 'Lname' name='Lname' placeholder="Enter Last name" required>
                                             </div>
-                                            <div class="form-group col-md-12">
-                                                <label>First Name*</label>
-                                                <input class="form-control" name='Fname' placeholder="Enter First name" >
+                                            <div class="form-group col-md-4">
+                                                <label>First Name<span class="required">*</span></label>
+                                                <input class="form-control" name='Fname' placeholder="Enter First name" required>
                                             </div>
-                                            <div class="form-group col-md-12">
-                                                <label>Middle Name*</label>
-                                                <input class="form-control" name='Mname' placeholder="Enter Middle Name" >
+                                            <div class="form-group col-md-4">
+                                                <label>Middle Name<span class="required">*</span></label>
+                                                <input class="form-control" name='Mname' placeholder="Enter Middle Name" required>
                                             </div>
 
-                                            <div class="form-group col-md-12">
-                                                <label>Date of birth*</label>
-                                                <input type="date" name='Bdate' class="form-control" >
+                                            <div class="form-group col-md-4">
+                                                <label>Date of birth<span class="required">*</span></label>
+                                                <input type="date" name='Bdate' class="form-control" required>
                                                     
                                             </div>
                                             
-                                            <div class="form-group col-md-12">
-                                                <label>Age*</label>
-                                                <input class="form-control" name='Age' placeholder="Enter age" type="number" min="0" >
+                                            <div class="form-group col-md-4">
+                                                <label>Age<span class="required">*</span></label>
+                                                <input class="form-control" name='Age' placeholder="Enter age" type="number" min="0" required>
                                             </div>
-                                            <div class="form-group col-md-12">
-                                                <label>Gender*</label>
-                                                <select name='Gender' class="form-control" >
+                                            <div class="form-group col-md-4">
+                                                <label>Gender<span class="required">*</span></label>
+                                                <select name='Gender' class="form-control" required>
                                                     <option value="1">Male</option>
                                                     <option value="2">Female</option>
                                                 </select>             
                                             </div>
 
-                                             <div class="form-group col-md-12">
-                                                <label>Ethnicity*</label>
-                                                <select name='Ethnicity' class="form-control" >
+                                             <div class="form-group col-md-4">
+                                                <label>Ethnicity<span class="required">*</span></label>
+                                                <select name='Ethnicity' class="form-control" required>
                                                     <option value="1">Maranao</option>
                                                     <option value="2">Cebuano</option>
                                                 </select>             
                                             </div>
 
-                                             <div class="form-group col-md-12">
-                                                <label>Religion*</label>
-                                                <select name='Religion' class="form-control" >
+                                             <div class="form-group col-md-4">
+                                                <label>Religion<span class="required">*</span></label>
+                                                <select name='Religion' class="form-control" required>
                                                     <option value="1">Islam</option>
                                                     <option value="2">Roman Catholic</option>
                                                 </select>             
                                             </div>
 
-																<div class="form-group col-md-12">
-                                                <label>Marital Status*</label>
-                                                <select name='MaritalStatus' class="form-control" >
+																<div class="form-group col-md-4">
+                                                <label>Marital Status<span class="required">*</span></label>
+                                                <select name='MaritalStatus' class="form-control" required>
                                                     <option value="1">Single</option>
                                                     <option value="2">Married</option>
 																	 <option value="3">Annulled</option>
@@ -89,11 +103,9 @@ $db_handle = new DBController();
                                                 </select>             
                                             		</div>
 
-											<div class="form-group col-sm-12">
-												<label>Relation to the family head*</label>
-												<select class="form-control col-md-12" id="relation" name='relation'  >
-
-													<option>  <label>Relation to the family head*</label> </option>
+											<div class="form-group col-sm-6">
+												<label>Relation to the family head<span class="required">*</span></label>
+												<select class="form-control col-md-12" id="relation" name='relation'  required>
 													<option value="1">Head</option>
 													<option value="2">Wife</option>
 													<option value="3">Son</option>
@@ -102,9 +114,9 @@ $db_handle = new DBController();
 												</select>
 												</div>
 
-												<div class="form-group col-md-12" id = 'serial_no_div'>
-                                                <label>Serial No*</label>
-                                                <input class="form-control" id = 'serial_no' name='serial_no' placeholder="Enter Serial No" >
+												<div class="form-group col-md-6" id = 'serial_no_div'>
+                                                <label>Serial No<span class="required">*</span></label>
+                                                <input class="form-control" id = 'serial_no' name='serial_no' placeholder="Enter Serial No" required>
                                                 <br>
                                                 
                                           		  </div>
@@ -115,7 +127,7 @@ $db_handle = new DBController();
 												<div id="displayHead"  class="form-group">	
 												<label>Select Head of the Family:</label>
 												<select class="form-control" id= 'selected_head' name='selected_head' >
-												<option>  <label>Select Head of the Family*</label> </option>
+												<option>  <label>Select Head of the Family<span class="required">*</span></label> </option>
 													<?php
 
                          								 $results = $db_handle->runFetch("SELECT * FROM dafac_no");
@@ -134,7 +146,7 @@ $db_handle = new DBController();
 											</div>
 										  
 											<div class="form-group col-md-12">
-												<label>Educational Attainment*</label>
+												<label>Educational Attainment<span class="required">*</span></label>
 												<div class="row">
 													<div class="col-md-6">
 														<select class="form-control" id="education" onchange = "ShowHideDiv()">
@@ -177,60 +189,67 @@ $db_handle = new DBController();
 												<!--/.row-->
 											</div>
                                             
-                                            <div class="form-group col-md-12">
+                                            <div class="form-group col-md-6">
                                                 <label>Employment/Occupation</label>
-                                                <input class="form-control" name="occupation" placeholder="Enter occupation" >
+                                                <input class="form-control" name="occupation" placeholder="Enter occupation" required>
                                             </div>
-                                            <div class="form-group col-md-12">
+                                            <div class="form-group col-md-6">
                                                 <label>Monthly Net Income</label>
-                                                <input class="form-control" name="net_income" placeholder="Enter Monthly Income " >
+                                                <input class="form-control" name="net_income" placeholder="Enter Monthly Income " required>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                	<div id = "contact_div">
-                                <div class="col-lg-6">
-										<div class="panel panel-success" id="accordion">
-										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-										<div class="panel-heading">Contact Information</div>
-										</a>
-											<div class="panel-body panel-collapse collapse in" id="collapseFour">                           
-												<div class="form-group col-md-6">
-													<label>Phone Number*</label>
+                                            <div class="form-group col-md-6">
+													<label>Phone Number<span class="required">*</span></label>
 													<input class="form-control" name='PhoneNum' placeholder="Enter phone number" id = "PhoneNum">
 												</div>
 												<div class="form-group col-md-6">
-													<label>Email*</label>
+													<label>Email<span class="required">*</span></label>
+													<input class="form-control" id='Email' name='Email' placeholder="your@mail.com">
+												</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                	<!-- <div id = "contact_div">
+                                <div class="col-lg-6">
+										<div class="panel panel-info" id="accordion">
+										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+										<div class="panel-heading"><h6><b>Contact Information</b></h6></div>
+										</a>
+											<div class="panel-body panel-collapse collapse in" id="collapseFour">                           
+												<div class="form-group col-md-6">
+													<label>Phone Number<span class="required">*</span></label>
+													<input class="form-control" name='PhoneNum' placeholder="Enter phone number" id = "PhoneNum">
+												</div>
+												<div class="form-group col-md-6">
+													<label>Email<span class="required">*</span></label>
 													<input class="form-control" id='Email' name='Email' placeholder="your@mail.com">
 												</div>
 												<div class="form-group col-md-6">
-													<label>Other Contact*</label>
+													<label>Other Contact<span class="required">*</span></label>
 													<input class="form-control" id='OtherContact' name='OtherContact' placeholder="Enter other contact">
 												</div>
 											</div>
 									</div>
 								</div>
-								</div>
+								</div> -->
 
 
 								<div id = "relocation_div">
 								<div class="col-lg-6">
-									<div class="panel panel-success" id="accordion">
+									<div class="panel panel-info" id="accordion">
 										<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-										<div class="panel-heading">Relocation Address</div>
+										<div class="panel-heading"><h6><b>Relocation Address</b></h6></div>
 										</a>
 											<div class="panel-body panel-collapse collapse in" id="collapseThree">      
-                                                    <div class="form-group col-md-12">
-                                                     
+                                                    <div class="form-group col-md-6">
+                                                    <label>Type of Relocation<span class="required">*</span></label>
                                                       
                                                 <select class="form-control" name="EvacType" id="EvacType" >
-                                        	<option>  <label>Type of Relocation*</label> </option>
                     										<option value="1">Evacuation Center</option>
                     										<option value="2">Home-based</option>
                     									</select> 
                                                     </div> 
-                                                    <div id="EvacName" class="form-group  col-md-12">
-													<label>Name of the Evacuation Center*</label>
+                                                    <div id="EvacName" class="form-group col-md-6">
+													<label>Name of the Evacuation Center<span class="required">*</span></label>
 													<select name="EvacName" class="form-control">
 														<?php
 
@@ -244,9 +263,9 @@ $db_handle = new DBController();
 													</select> 
 													</div>
 													<div id = "home_based_div">
-													<div class="form-group col-md-12">
-													<label for="province">Province* for home-based</label>
-													<select name='province' id='province' class="form-control" >
+													<div class="form-group col-md-6">
+													<label for="province">Province<span class="required">* for home-based</span></label>
+													<select name='province' id='province' class="form-control" required>
 														<?php
                             							 $results = $db_handle->runFetch("SELECT * FROM province");
                
@@ -256,9 +275,9 @@ $db_handle = new DBController();
 														<?php } ?>
 													</select>
 												</div>
-												<div class="form-group col-md-12">
-													<label>District* for home-based</label>
-													<select name='district' id='district' class="form-control" >
+												<div class="form-group col-md-6">
+													<label>District<span class="required">* for home-based</span></label>
+													<select name='district' id='district' class="form-control" required>
 														<?php
                                  						$results = $db_handle->runFetch("SELECT * FROM district");
                
@@ -268,9 +287,9 @@ $db_handle = new DBController();
 														<?php } ?>
 													</select>
 												</div>
-												<div class="form-group col-md-12">
-													<label>City/Municipality* for home-based</label>
-													<select name="city_mun" id="city_mun" class="form-control" >
+												<div class="form-group col-md-6">
+													<label>City/Municipality<span class="required">* for home-based</span></label>
+													<select name="city_mun" id="city_mun" class="form-control" required>
 														<?php
 
 
@@ -283,9 +302,9 @@ $db_handle = new DBController();
 														<?php } ?>
 													</select>  
 												</div>
-												<div class="form-group col-md-12">
-													<label>Barangay* for home-based</label>
-													<select name="barangay2" id="barangay2" class="form-control" >
+												<div class="form-group col-md-6">
+													<label>Barangay<span class="required">* for home-based</span></label>
+													<select name="barangay2" id="barangay2" class="form-control" required>
 														<?php
 
                                 					$results = $db_handle->runFetch("SELECT * FROM barangay, city_mun WHERE barangay.City_CityID=city_mun.City_Mun_ID");
@@ -296,8 +315,8 @@ $db_handle = new DBController();
 														<?php } ?>
 													</select> 
 												</div>
-												<div class="form-group col-md-12">
-													<label>Street/Purok*for home-based</label>
+												<div class="form-group col-md-6">
+													<label>Street/Purok<span class="required">*for home-based</span></label>
 													<input class="form-control" name="SpecificAddress1" placeholder="144 Purok Sampaguita" type="textbox"/>
 												</div>
 												
@@ -309,13 +328,13 @@ $db_handle = new DBController();
 
 										<div id = "home_address_div">
 										<div class="col-lg-6">
-											<div class="panel panel-success" id="accordion">
+											<div class="panel panel-info" id="accordion">
 												<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-												<div class="panel-heading">Home Address</div>
+												<div class="panel-heading"><h6><b>Home Address</b></h6></div>
 												</a>
 													<div class="panel-body panel-collapse collapse in" id="collapseTwo"> 
-														<div class="form-group col-md-12">
-															<label for="province">Province*</label>
+														<div class="form-group col-md-6">
+															<label for="province">Province<span class="required">*</span></label>
 															<select name='province' id='province' class="form-control">
 																<?php
 
@@ -328,8 +347,8 @@ $db_handle = new DBController();
 																<?php } ?>
 															</select>
 														</div>
-														<div class="form-group col-md-12">
-															<label>District*</label>
+														<div class="form-group col-md-6">
+															<label>District<span class="required">*</span></label>
 															<select name='district' id='district' class="form-control">
 																<?php
 
@@ -340,8 +359,8 @@ $db_handle = new DBController();
 																<?php } ?>
 															</select>
 														</div>
-														<div class="form-group col-md-12">
-															<label>City/Municipality*</label>
+														<div class="form-group col-md-6">
+															<label>City/Municipality<span class="required">*</span></label>
 															<select name="city_mun" id="city_mun" class="form-control">
 																<?php
 
@@ -353,9 +372,9 @@ $db_handle = new DBController();
 																<?php } ?>
 															</select>  
 														</div>
-														<div class="form-group col-md-12">
-															<label>Barangay*</label>
-															<select name="barangay1" id="barangay1" class="form-control" >
+														<div class="form-group col-md-6">
+															<label>Barangay<span class="required">*</span></label>
+															<select name="barangay1" id="barangay1" class="form-control" required>
 																<?php
 
 
@@ -368,8 +387,8 @@ $db_handle = new DBController();
 																<?php } ?>
 																</select> 
 														</div>
-															<div class="form-group col-md-12">
-																<label>Street/Purok*</label>
+															<div class="form-group col-md-6">
+																<label>Street/Purok<span class="required">*</span></label>
 																<input class="form-control" name="SpecificAddress" placeholder="144 Purok Sampaguita" type="textbox"/>
 															</div>
 														</div>
@@ -379,9 +398,9 @@ $db_handle = new DBController();
 										
 										<div id = "sector_div">
 										<div class="col-lg-6">
-											<div class="panel panel-success" id="accordion">
+											<div class="panel panel-info" id="accordion">
 												<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-												<div class="panel-heading">Sectors</div>
+												<div class="panel-heading"><h6><b>Sectors</b></h6></div>
 												</a>
 												<div class="panel-body panel-collapse collapse in" id="collapseFive">                           
 														<?php
@@ -402,7 +421,7 @@ $db_handle = new DBController();
 													</div>
 
 													</div>
-                            <input type="submit" class="btn btn-info" value="Submit">
+                            <input type="submit" class="btn btn-info btn-fill" value="Submit" style="margin-left: 20px;">
                      						 		</form>
 													</div>
                         </div>
@@ -425,17 +444,6 @@ $db_handle = new DBController();
     <script src="js/jquery.scrollTo.min.js"></script>
     <script src="js/jquery.nicescroll.js" type="text/javascript"></script><!--custome script for all page-->
     <script src="js/scripts.js"></script>
-	
-    <style type="text/css">
-    	
-    		#home_based_div{
-    			display: none;
-    		}
-    		#displayHead{
-    			display: none;
-    		}
-
-    </style>
 
   </body>
 </html>
